@@ -37,10 +37,6 @@ export default class ContactList extends React.Component<Props, State> {
         editableContact: null,
     };
 
-    static renderContactIcon(type: string): React.Element<any> {
-        return <ContactTypeIcon type={type} />;
-    }
-
     render(): React.Element<any> {
         const { items, contactDescriptions } = this.props;
         const {
@@ -65,9 +61,9 @@ export default class ContactList extends React.Component<Props, State> {
                                             onClick={() => this.handleBeginEditContact(contact)}
                                         >
                                             <td className={cn("icon")}>
-                                                {ContactList.renderContactIcon(contact.type)}
+                                                <ContactTypeIcon type={contact.type} />
                                             </td>
-                                            <td className={cn("value")}>{contact.value}</td>
+                                            <td>{contact.value}</td>
                                         </tr>
                                     ))}
                                 </tbody>
@@ -183,11 +179,6 @@ export default class ContactList extends React.Component<Props, State> {
             editContactModalVisible: true,
             editableContact: contact,
         });
-    };
-
-    handleRemoveContact = (contact: Contact) => {
-        const { onRemoveContact } = this.props;
-        onRemoveContact(contact);
     };
 
     handleChangeEditableContact = (contactUpdate: $Shape<Contact>) => {
