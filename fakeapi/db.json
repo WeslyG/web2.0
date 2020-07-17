@@ -4025,6 +4025,9 @@
             }
         ]
     },
+    "triggerCheck": {
+        "syntax_ok": true
+    },
     "health": {
         "state": "OK",
         "message": null
